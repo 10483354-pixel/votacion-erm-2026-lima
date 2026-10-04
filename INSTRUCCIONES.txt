@@ -1,0 +1,14 @@
+VOTACIÓN ERM 2026 – LIMA
+
+1. DESCARGA Y DESCOMPRIME EL ZIP.
+2. ABRE LA CARPETA EN VISUAL STUDIO CODE.
+3. DEBES TENER JUNTOS:
+   - index.html
+   - style.css
+   - script.js
+   - carpeta candidatos
+   - carpeta recursos
+4. ABRE index.html EN GOOGLE CHROME.
+
+IMPORTANTE:
+Es una simulación académica. Los nombres e imágenes de candidatos incluidos corresponden al material proporcionado para este proyecto y no constituyen una validación oficial de candidaturas.

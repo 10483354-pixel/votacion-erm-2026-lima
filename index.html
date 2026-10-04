@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERM 2026 | Simulador Electoral Académico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top-header">
+    <div class="official-reference">
+        <img src="recursos/encabezado-erm-2026.png" alt="Referencia visual ERM 2026">
+    </div>
+    <div class="simulation-badge">SIMULACIÓN ACADÉMICA</div>
+</header>
+
+<nav class="main-nav">
+    <button onclick="irInicio()">Inicio</button>
+    <button onclick="abrirDondeVotar()">📍 Sepa dónde votar</button>
+    <button onclick="abrirGeolocalizacion()">🧭 Geolocalización</button>
+    <button onclick="mostrarCedula()">🗳️ Cédula</button>
+    <button onclick="mostrarResultados()">📊 Resultados</button>
+</nav>
+
+<section class="hero">
+    <div>
+        <span class="eyebrow">ELECCIONES REGIONALES Y MUNICIPALES 2026</span>
+        <h1>Simulador de votación digital</h1>
+        <p>Experiencia académica inspirada en la información y materiales públicos de las ERM 2026.</p>
+    </div>
+    <div class="hero-date">
+        <strong>04</strong>
+        <span>OCT<br>2026</span>
+    </div>
+</section>
+
+<div class="quick-grid">
+    <button class="quick-card" onclick="abrirDondeVotar()">
+        <span class="quick-icon">📍</span>
+        <span><strong>SEPA DÓNDE VOTAR</strong><small>Consulta oficial de local y mesa</small></span>
+        <b>→</b>
+    </button>
+    <button class="quick-card" onclick="abrirGeolocalizacion()">
+        <span class="quick-icon">🧭</span>
+        <span><strong>GEOLOCALIZACIÓN</strong><small>Ubique su posición en el mapa</small></span>
+        <b>→</b>
+    </button>
+    <button class="quick-card" onclick="mostrarCedula()">
+        <span class="quick-icon">🗳️</span>
+        <span><strong>CONOZCA LA CÉDULA</strong><small>Revise el modelo de referencia</small></span>
+        <b>→</b>
+    </button>
+</div>
+
+<div class="progress">
+    <div class="step active" id="step1"><span>1</span> Identificación</div>
+    <div class="line"></div>
+    <div class="step" id="step2"><span>2</span> Elección</div>
+    <div class="line"></div>
+    <div class="step" id="step3"><span>3</span> Votación</div>
+    <div class="line"></div>
+    <div class="step" id="step4"><span>4</span> Confirmación</div>
+</div>
+
+<main class="layout">
+    <aside class="sidebar">
+        <div class="side-card official-card">
+            <h3>🗳️ PROCESO ELECTORAL</h3>
+            <h2>Elecciones Regionales y Municipales 2026</h2>
+            <div class="year">2026</div>
+            <hr>
+            <p>📅 Fecha: <strong>04/10/2026</strong></p>
+            <p>⏰ Jornada: <strong>07:00 - 17:00</strong></p>
+            <p>📍 Ámbito: <strong>Lima</strong></p>
+            <p>🔐 Sistema: <strong class="online">SIMULACIÓN</strong></p>
+        </div>
+
+        <div class="side-card">
+            <h3>📋 PASOS</h3>
+            <ol>
+                <li>Identifique al elector.</li>
+                <li>Seleccione el ámbito electoral.</li>
+                <li>Seleccione una opción.</li>
+                <li>Revise su voto.</li>
+                <li>Confirme la simulación.</li>
+            </ol>
+        </div>
+
+        <div class="side-card side-action">
+            <h3>📍 ¿DÓNDE ME TOCA VOTAR?</h3>
+            <p>Consulte el local, mesa y datos asignados en la plataforma oficial.</p>
+            <button class="btn primary full" onclick="abrirDondeVotar()">SEPA DÓNDE VOTAR</button>
+        </div>
+
+        <div class="notice">
+            <strong>⚠️ IMPORTANTE</strong>
+            <p>Este proyecto es una simulación académica. No registra votos reales, no consulta el padrón electoral y no reemplaza los servicios oficiales.</p>
+        </div>
+    </aside>
+
+    <section class="content">
+
+        <section class="card" id="identificacion">
+            <div class="title">
+                <div class="number">01</div>
+                <div>
+                    <h2>Identificación del elector</h2>
+                    <p>Ingrese datos ficticios para iniciar la simulación.</p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="dni">DNI simulado</label>
+                    <input type="text" id="dni" maxlength="8" placeholder="Ejemplo: 12345678">
+                    <small>No corresponde a una consulta real del padrón.</small>
+                </div>
+                <div class="input-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" placeholder="Ingrese nombre para la simulación">
+                </div>
+            </div>
+
+            <div id="mensajeIdentificacion" class="message"></div>
+
+            <div class="buttons">
+                <button class="btn primary" onclick="validarElector()">CONTINUAR →</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="eleccion">
+            <div class="title">
+                <div class="number">02</div>
+                <div>
+                    <h2>Proceso electoral</h2>
+                    <p>Seleccione el ámbito municipal que se simulará.</p>
+                </div>
+            </div>
+
+            <div class="election-grid">
+                <div class="election-card selected" onclick="seleccionarEleccion(this, 'Municipal Metropolitana de Lima')">
+                    <div class="icon">🏙️</div>
+                    <h3>Municipal Metropolitana de Lima</h3>
+                    <p>Simulación académica de una elección municipal.</p>
+                </div>
+            </div>
+
+            <div id="mensajeEleccion" class="message"></div>
+
+            <div class="buttons">
+                <button class="btn primary" onclick="continuarEleccion()">CONTINUAR →</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="votacion">
+            <div class="title">
+                <div class="number">03</div>
+                <div>
+                    <h2>Boleta electoral digital</h2>
+                    <p>Seleccione una sola candidatura para esta simulación.</p>
+                </div>
+            </div>
+
+            <div class="voter-info">
+                <div><span>Elector</span><strong id="electorMostrar">-</strong></div>
+                <div><span>Proceso</span><strong id="eleccionMostrar">-</strong></div>
+            </div>
+
+            <div class="reference-warning">
+                <strong>Referencia de diseño:</strong> las imágenes de candidatos fueron proporcionadas para esta actividad. La cédula oficial de las ERM utiliza símbolos de organizaciones políticas y puede variar según la circunscripción.
+            </div>
+
+            <h3 class="subtitle">Candidaturas — Lima Metropolitana</h3>
+            <div id="candidatos" class="candidate-grid"></div>
+
+            <h3 class="subtitle">Otras opciones</h3>
+            <div class="special-grid">
+                <div class="special-card" id="blanco" onclick="seleccionarEspecial('blanco')">
+                    <div>⚪</div>
+                    <strong>VOTO EN BLANCO</strong>
+                    <small>No seleccionar candidatura</small>
+                </div>
+                <div class="special-card" id="nulo" onclick="seleccionarEspecial('nulo')">
+                    <div>❌</div>
+                    <strong>VOTO NULO</strong>
+                    <small>Registrar voto nulo en la simulación</small>
+                </div>
+            </div>
+
+            <div id="seleccion" class="selection">Ninguna opción seleccionada.</div>
+            <div id="mensajeVotacion" class="message"></div>
+
+            <div class="buttons">
+                <button class="btn primary" onclick="revisarVoto()">REVISAR VOTO →</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="confirmacion">
+            <div class="title">
+                <div class="number">04</div>
+                <div>
+                    <h2>Confirmación del voto</h2>
+                    <p>Revise cuidadosamente su selección antes de registrar la simulación.</p>
+                </div>
+            </div>
+
+            <div class="review">
+                <div class="review-icon">🔎</div>
+                <h3>Revise su voto</h3>
+                <div class="review-data">
+                    <div><span>Elector</span><strong id="confirmarElector">-</strong></div>
+                    <div><span>Proceso</span><strong id="confirmarEleccion">-</strong></div>
+                    <div><span>Selección</span><strong id="confirmarVoto">-</strong></div>
+                </div>
+                <div class="warning">⚠️ Verifique su selección antes de confirmar.</div>
+                <div class="buttons center">
+                    <button class="btn secondary" onclick="volverVotacion()">← MODIFICAR</button>
+                    <button class="btn success" onclick="confirmarVoto()">🔒 CONFIRMAR SIMULACIÓN</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="card hidden" id="constancia">
+            <div class="success-panel">
+                <div class="success-icon">✓</div>
+                <h2>SIMULACIÓN REGISTRADA</h2>
+                <p>La operación fue registrada únicamente en este navegador.</p>
+            </div>
+            <div class="receipt">
+                <div class="receipt-header">🗳️ CONSTANCIA ACADÉMICA</div>
+                <div class="receipt-body">
+                    <div><span>Código</span><strong id="codigo">-</strong></div>
+                    <div><span>Fecha y hora</span><strong id="fecha">-</strong></div>
+                    <div><span>Elector</span><strong id="constanciaNombre">-</strong></div>
+                    <div><span>Proceso</span><strong id="constanciaProceso">-</strong></div>
+                </div>
+                <div class="receipt-footer">🔐 Constancia generada para fines académicos.</div>
+            </div>
+            <div class="buttons center">
+                <button class="btn secondary" onclick="imprimirConstancia()">🖨️ IMPRIMIR</button>
+                <button class="btn primary" onclick="mostrarResultados()">📊 RESULTADOS</button>
+            </div>
+        </section>
+
+        <section class="card hidden" id="resultados">
+            <div class="title">
+                <div class="number">05</div>
+                <div>
+                    <h2>Resultados de la simulación</h2>
+                    <p>Conteo local almacenado en este navegador.</p>
+                </div>
+            </div>
+            <div id="resultadosLista"></div>
+            <div class="total">Total de simulaciones registradas: <strong id="totalVotos">0</strong></div>
+            <div class="buttons center">
+                <button class="btn secondary" onclick="reiniciar()">🔄 NUEVA SIMULACIÓN</button>
+                <button class="btn danger" onclick="borrarResultados()">🗑️ BORRAR RESULTADOS</button>
+            </div>
+        </section>
+
+        <section class="card" id="cedulaSection">
+            <div class="title">
+                <div class="number">06</div>
+                <div>
+                    <h2>Cédula electoral de referencia</h2>
+                    <p>Material visual proporcionado para complementar la simulación.</p>
+                </div>
+            </div>
+            <div class="cedula-box">
+                <img src="recursos/cedula-referencia.png" alt="Cédula electoral de referencia ERM 2026">
+            </div>
+            <div class="caption">La cédula puede variar según la circunscripción. En las ERM 2026 la forma de la cédula depende del ámbito electoral.</div>
+        </section>
+
+        <section class="card" id="geolocalizacionSection">
+            <div class="title">
+                <div class="number">07</div>
+                <div>
+                    <h2>Geolocalización</h2>
+                    <p>Permite visualizar la ubicación del dispositivo si el usuario autoriza el navegador.</p>
+                </div>
+            </div>
+            <div class="geo-panel">
+                <div class="geo-info">
+                    <div class="geo-icon">🧭</div>
+                    <h3>Ubique su posición</h3>
+                    <p>Esta función no determina el local electoral asignado. Solo muestra la ubicación aproximada del dispositivo.</p>
+                    <button class="btn primary" onclick="obtenerUbicacion()">📍 OBTENER MI UBICACIÓN</button>
+                    <div id="geoStatus" class="message">Esperando autorización del navegador.</div>
+                    <div class="coordinates" id="coordinates">Latitud: — · Longitud: —</div>
+                    <a id="mapLink" class="map-link hidden" href="#" target="_blank" rel="noopener">Abrir ubicación en OpenStreetMap ↗</a>
+                </div>
+                <div class="map-wrap">
+                    <div id="mapPlaceholder" class="map-placeholder">🗺️<br><span>El mapa aparecerá cuando autorice la geolocalización.</span></div>
+                    <iframe id="mapFrame" class="hidden" title="Mapa de geolocalización"></iframe>
+                </div>
+            </div>
+        </section>
+    </section>
+</main>
+
+<div id="modalDondeVotar" class="modal hidden">
+    <div class="modal-card">
+        <button class="modal-close" onclick="cerrarModal('modalDondeVotar')">×</button>
+        <div class="modal-icon">📍</div>
+        <h2>SEPA DÓNDE VOTAR</h2>
+        <p>La consulta oficial permite conocer el local de votación, dirección, mesa y otros datos asignados al elector.</p>
+        <div class="official-box">
+            <strong>Consulta oficial ONPE</strong>
+            <span>Ingrese al sistema oficial para consultar sus datos electorales.</span>
+        </div>
+        <div class="modal-actions">
+            <a class="btn primary" href="https://consultaelectoral.onpe.gob.pe/" target="_blank" rel="noopener">ABRIR CONSULTA OFICIAL ↗</a>
+            <button class="btn secondary" onclick="cerrarModal('modalDondeVotar')">CERRAR</button>
+        </div>
+        <small>Este simulador no tiene acceso al padrón electoral ni puede asignar un local real.</small>
+    </div>
+</div>
+
+<div id="modalCedula" class="modal hidden">
+    <div class="modal-card wide">
+        <button class="modal-close" onclick="cerrarModal('modalCedula')">×</button>
+        <h2>🗳️ CÉDULA DE REFERENCIA</h2>
+        <img src="recursos/cedula-referencia.png" alt="Cédula de referencia">
+        <button class="btn secondary" onclick="cerrarModal('modalCedula')">CERRAR</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div>
+        <h3>🗳️ ERM 2026 · SIMULADOR ACADÉMICO</h3>
+        <p>Inspirado en materiales públicos del proceso electoral.</p>
+    </div>
+    <div>
+        <p>Elaborado por: <strong>MARIO HERRADA GUTIERREZ</strong></p>
+        <p>Proyecto académico · HTML5 · CSS3 · JavaScript</p>
+    </div>
+</footer>
+
+<div class="source-note">
+    Referencias: <a href="https://erm2026.onpe.gob.pe/" target="_blank" rel="noopener">ONPE — ERM 2026</a> ·
+    <a href="https://consultaelectoral.onpe.gob.pe/" target="_blank" rel="noopener">Consulta oficial de local de votación</a>.
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
